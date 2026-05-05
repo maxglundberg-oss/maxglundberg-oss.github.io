@@ -1,8 +1,409 @@
-<div style="text-align: center; margin: 40px 0;">
-    <h3>Live Market Tracking</h3>
-    <p>For real-time price action and performance metrics of our core holdings:</p>
-    <a href="https://finance.yahoo.com/portfolio/p_1/view/fv"="_blank" 
-       style="background-color: #005f9c; color: white; padding: 15px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-       View Live Portfolio on Yahoo Finance →
-    </a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio | Lundberg Enterprises</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #faf9f7;
+      color: #1a1a1a;
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 24px 80px;
+      line-height: 1.7;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .meta {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .summary-card {
+      border: 1px solid #e0ddd8;
+      padding: 14px 16px;
+      background: #fff;
+    }
+
+    .summary-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .summary-value {
+      font-size: 1.25rem;
+      color: #1a1a1a;
+    }
+
+    .summary-sub {
+      font-size: 0.78rem;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
+
+    thead th {
+      text-align: left;
+      font-weight: normal;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody td {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0ede8;
+      vertical-align: middle;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .holding-name {
+      font-weight: normal;
+      color: #1a1a1a;
+    }
+
+    .holding-ticker {
+      font-size: 0.78rem;
+      color: #aaa;
+      margin-top: 2px;
+    }
+
+    .bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bar-bg {
+      width: 80px;
+      height: 4px;
+      background: #e8e5e0;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #1a1a1a;
+    }
+
+    .up { color: #2d6a0a; }
+    .down { color: #8b2020; }
+    .neutral { color: #888; }
+
+    .pct { font-variant-numeric: tabular-nums; }
+
+    .category-badge {
+      font-size: 0.72rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    .philosophy {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .philosophy p {
+      margin-bottom: 12px;
+    }
+
+    nav {
+      font-size: 0.85rem;
+      margin-top: 48px;
+      color: #888;
+    }
+
+    nav a {
+      color: #1a1a1a;
+      text-decoration: none;
+      margin-right: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .targets {
+      font-size: 0.88rem;
+      color: #444;
+    }
+
+    .target-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0ede8;
+    }
+
+    .target-row:last-child {
+      border-bottom: none;
+    }
+
+    .target-name { color: #1a1a1a; }
+    .target-price { color: #888; font-style: italic; }
+
+    .updated {
+      font-size: 0.78rem;
+      color: #bbb;
+      margin-top: 40px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Lundberg Enterprises</h1>
+  <p class="tagline">"Take a simple idea and take it seriously." – Charlie Munger</p>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="analysis.html">Analysis</a>
+  </nav>
+
+  <hr>
+
+  <h2>Portfolio — Montrose ISK</h2>
+  <p class="meta">Confused Quality · Long-term compounder · Horizon 2042</p>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-label">Total value</div>
+      <div class="summary-value">~35K</div>
+      <div class="summary-sub">SEK</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">Positions</div>
+      <div class="summary-value">8</div>
+      <div class="summary-sub">Active holdings</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">Horizon</div>
+      <div class="summary-value">2042</div>
+      <div class="summary-sub">~17 years</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:35%">Holding</th>
+        <th style="width:20%">Weight</th>
+        <th style="width:15%">Return</th>
+        <th style="width:30%">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <div class="holding-name">Harvia</div>
+          <div class="holding-ticker">HARVIA · Helsinki</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            <span class="pct">~26%</span>
+          </div>
+        </td>
+        <td class="down pct">-1.1%</td>
+        <td><span class="category-badge">Fast Grower</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">SkiStar</div>
+          <div class="holding-ticker">SKIS B · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+            <span class="pct">~24%</span>
+          </div>
+        </td>
+        <td class="down pct">-1.1%</td>
+        <td><span class="category-badge">Stalwart</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">Sdiptech</div>
+          <div class="holding-ticker">SDIP B · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div>
+            <span class="pct">~14%</span>
+          </div>
+        </td>
+        <td class="up pct">+30.2%</td>
+        <td><span class="category-badge">Fast Grower</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">CD Projekt</div>
+          <div class="holding-ticker">CDR · Warsaw</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:50%"></div></div>
+            <span class="pct">~13%</span>
+          </div>
+        </td>
+        <td class="up pct">+1.2%</td>
+        <td><span class="category-badge">Fast Grower</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">Beijer Ref</div>
+          <div class="holding-ticker">BEIJR · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div>
+            <span class="pct">~8%</span>
+          </div>
+        </td>
+        <td class="up pct">+9.1%</td>
+        <td><span class="category-badge">Stalwart</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">Systemair</div>
+          <div class="holding-ticker">SYSR · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:33%"></div></div>
+            <span class="pct">~8%</span>
+          </div>
+        </td>
+        <td class="down pct">-8.7%</td>
+        <td><span class="category-badge">Stalwart</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">NIBE</div>
+          <div class="holding-ticker">NIBE B · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:22%"></div></div>
+            <span class="pct">~4%</span>
+          </div>
+        </td>
+        <td class="up pct">+19.6%</td>
+        <td><span class="category-badge">Turnaround</span></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="holding-name">Instalco</div>
+          <div class="holding-ticker">INSTAL · Stockholm</div>
+        </td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar-bg"><div class="bar-fill" style="width:18%"></div></div>
+            <span class="pct">~4%</span>
+          </div>
+        </td>
+        <td class="up pct">+50.3%</td>
+        <td><span class="category-badge">Fast Grower</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Active Targets</h2>
+  <div class="targets">
+    <div class="target-row">
+      <span class="target-name">Harvia — add more</span>
+      <span class="target-price">Entry below €30</span>
+    </div>
+    <div class="target-row">
+      <span class="target-name">Electrolux Professional — initiate</span>
+      <span class="target-price">Entry below 40 SEK</span>
+    </div>
+    <div class="target-row">
+      <span class="target-name">Berkshire Hathaway B — initiate</span>
+      <span class="target-price">Next monthly contribution</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Investment Philosophy</h2>
+  <div class="philosophy">
+    <p>This portfolio is built around one idea: own wonderful businesses at fair prices and hold them long enough for compounding to do the work.</p>
+    <p>We apply Peter Lynch's six categories as a filter. Stalwarts provide stability. Fast Growers provide returns. Turnarounds provide occasional asymmetry. Cyclicals and Slow Growers are avoided unless the price is extraordinary.</p>
+    <p>The account mandate is simple: buy quality, add on weakness, never sell unless the thesis is broken. Price is not a thesis.</p>
+    <p>Horizon: 2042.</p>
+  </div>
+
+  <hr>
+
+  <p class="updated">Last updated: May 2026 · <a href="https://nglinvest.substack.com" style="color:#888;">nglinvest.substack.com</a></p>
+
+  <nav style="margin-top: 24px;">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="reflections.html">Reflections</a>
+    <a href="analysis.html">Analysis</a>
+  </nav>
+
+</body>
+</html>
